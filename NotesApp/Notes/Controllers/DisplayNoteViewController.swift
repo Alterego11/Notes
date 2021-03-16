@@ -7,14 +7,15 @@
 
 import UIKit
 
-
-
-
-class DisplayNoteViewController: UIViewController {
+class DisplayNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
     var note: Note?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,7 +45,6 @@ class DisplayNoteViewController: UIViewController {
             note.content = contentTextView.text ?? ""
             note.modificationTime = Date()
             CoreDataHelper.saveNote()
-        
         case "cancel":
             print("Нажата кнопка отмены")
         default:
