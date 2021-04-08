@@ -22,8 +22,6 @@ class ListNotesTableViewController: UITableViewController {
         //Change Navigation Bar
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SF Pro Rounded", size: 30) ?? UIFont.systemFont(ofSize: 20)]
     }
-        
-    // MARK: - Cell
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
@@ -36,6 +34,7 @@ class ListNotesTableViewController: UITableViewController {
         
         // Format Date to String
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
         formatter.dateFormat = "HH:mm E, d MMM y"
         let formatedDate = formatter.string(from: note.modificationTime!)
         cell.noteTime.text = formatedDate
